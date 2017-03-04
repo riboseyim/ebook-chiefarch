@@ -3,13 +3,12 @@
 ## 翻译／整理：[RiboseYim](https://riboseyim.github.io)
 
 >工程师、开源粉、深度阅读患者。
-高效运维社区2016年度金牌作者
+>IEEE Member
+>高效运维社区2016年度金牌作者
 
 [Linkedin](https://www.linkedin.com/in/riboseyim/)
 [简书主页](http://www.jianshu.com/u/8cc1dba4bc96)
 [知乎专栏](https://www.zhihu.com/people/riboseyim)
-[作品合集](chapter/about/2016.md)
-
 
 ### 特色章节
 
