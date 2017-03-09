@@ -1,0 +1,43 @@
+# The Story Behind LinkedIn’s New Publishing Platform
+
+Jake Dejno September 8, 2016
+
+[link](https://engineering.linkedin.com/blog/2016/09/the-story-behind-linkedins-new-publishing-platform)
+
+## Quill and LinkedIn for Publishing
+Editor's note: To read Jacob's post on the native LinkedIn publishing platform, click here. You can also read more about the revamped publishing experience on the LinkedIn Company Blog.
+
+LinkedIn is more than a means of making professional connections or finding a job—it’s also a vibrant community where members can share news, insights, and recommendations related to their working lives. For this reason, our publishing platform, which allows members to create and share articles, is a key component of our site. Recently, we decided to overhaul the editor we use for our publishing platform, ultimately selecting the open source Quill as our new editor, and then customizing it to fit our needs. In this post, we’ll look at why we decided to go with an open source option versus building in-house, why we chose Quill, and what the experience of working with an open source project has been like.
+
+## Building in-house versus open source
+After we’d decided to revamp our publishing platform, we knew that we had two choices for selecting a new editor: we could build one ourselves, from scratch, or we could customize an existing, off-the-shelf option. After further research, while contemplating building the editor in-house, we realized that we could much more efficiently adapt an existing solution to fit our needs. We were then faced with the task of choosing which solution we’d adopt from the many available options.
+
+Some of the existing options we considered were TinyMCE, CKEditor, Aloha 2, and Quill. Our previous editor had been built on TinyMCE, but we were looking for an editor that would offer better load time performance, while also allowing us to be more flexible with our future product roadmap. TinyMCE and CKEditor both use a different model than Quill, and Aloha is currently not being developed. After evaluating these various editors in detail, we ultimately decided that Quill had several distinct technological advantages, and so chose to leverage it.
+
+## The origin of Quill
+Quill was originally authored by Jason Chen and Byron Milligan, who were also the original co-founders of a YC-backed startup called Stypi. At Stypi, Jason and Byron created a collaborative text editor that allowed you to share the URL of a document and have others contribute in real-time. It was this technology that caused Stypi to be acquired by Salesforce in 2012.
+
+While at Salesforce, the Stypi team worked on a significant rewrite of the underlying Stypi technology, breaking it into several open source projects. One of these would become Quill. Quill was open sourced to cater to the use case of collaborative notes and documents, since there was no similar publicly-available editor at the time. This open sourced editor would continue to gain traction and other users, including the likes of Intuit, Salesforce, Gannett Company, Vox Media, Hubspot, Asana, and now, LinkedIn.
+
+## The benefits of Quill
+Most editors are built using one of two models to represent user input: the document object model (DOM) or a DOM abstraction. Editors leveraging the DOM as their source of truth work by writing and reading HTML directly from and to the browser’s DOM. While an approach that updates the DOM directly may seem easier because the DOM API already exists, it does have some drawbacks. The DOM that it leverages will shift across browsers, and requires an immense effort to normalize and deal with certain edge cases based on which browser you are using. It also causes the rich text editor to see the content as DOM nodes, or objects within the DOM, instead of the characters and words that truly represent the text meant to be written and read. This causes issues, such as cursor positioning difficulty, since the underlying API for the DOM doesn’t use characters as the unit of measure. Adding solutions to these issues increases the complexity of the editor’s underlying architecture.
+
+Using a DOM abstraction, on the other hand, offers a much more seamless experience. Every edit creates a transform that is mapped to the DOM abstraction layer instead of each edit interacting directly with the document object (as is the case with DOM). One of the biggest benefits of this system is that it uses text and characters as the main unit of measure. This allows the underlying API for the DOM abstraction to be much simpler and does not require a traversal of the browser’s DOM to make calculations and then transformations based on those potentially shaky calculations.
+
+Two of the biggest reasons why we chose Quill were that it uses a fantastic DOM abstraction model and has a modular, clean API, which means it provides a cleaner, faster, more reliable experience for our members. The API also allows for the customization needed by LinkedIn’s new publishing platform, and makes the development team more productive as well. As LinkedIn publishing evolves, Quill’s underlying technology opens the door for rich features, such as collaborative editing and custom rich media types.
+
+## Working with an open source project
+Using an open source project like Quill instead of building our own editor meant that we had to consider how we would go about adapting the technology to fit our specific needs at LinkedIn. When we first decided that we wanted to use Quill, we reached out to Jason Chen, Quill’s creator. We told him we’d love to use Quill as the underlying technology for the new editor, and asked how we could also work with him to help make LinkedIn + Quill a success. A couple of meetings later, we began working on Quill, ultimately having several members of our team become core contributors to the project.
+
+We have a flexible, ongoing working relationship with Jason. For example, several of our team members are in the Quill Slack channel, and we meet with Jason and the team periodically as well. Jason and his work on Quill has made building the new editor a breeze. With this ongoing relationship, our development team has found the experience, on the whole, to be overwhelmingly positive. Being involved from the beta stage, even though it meant having to deal with the occasional bug, also meant that we could help contribute to and improve the product as it moved to being a release candidate. For us, this is a key element of our partnership with Quill—being able to give back to the project through our involvement. Our unique opportunity to work closely with Jason and his team means that our team is not just suggesting bugfixes and submitting pull requests, but in some ways is helping to build the Quill project while we adopt it. At LinkedIn, we often see these projects from the other side—our engineers have started lots of game-changing open source projects. But it’s also exciting to take a promising new product and, by adopting it and aligning closely with the creators and their vision, make improvements that will benefit the open source community at large.
+
+## The new publishing platform
+Building the new LinkedIn publishing platform with an open sourced editor has accelerated our ability to provide authors with a seamless and distraction-free writing environment. Adding features like full-bleed cover images, improved rich media embeds, and a sleek, new design will help authored content on LinkedIn look more beautiful than ever.  With continuous deployment of updates, near 100% test coverage, and other processes to ensure craftsmanship around our platform, the engineering team will be able to bring new features like code snippets, image resizing, and more, to you faster than ever as we continue iterating and improving our new platform for all types of authors in many different industries. Be on the lookout for more articles ranging from tech to feature deep-dives on LinkedIn publishing.
+
+## Acknowledgements
+I want to extend a huge thanks to Jason Chen for his extensive work on Quill and for allowing our team to fully integrate into the project as core contributors. The new publishing platform would not be where it is without that relationship.
+
+A second shout out to the entire Publishing engineering team, who put their heart and soul into this product and made it what it is today. Thanks to Austin Anderson, Steve Calvert, Nicholas Eidler, Neha Jain, Mark Lee, Alexandre Mercier, Scott Sheffield, Evan Solomon, Kristopher Teehan, and Peng Yuan. Looking forward to expanding Publishing within the LinkedIn Ecosystem.
+
+
+https://www.linkedin.com/in/peng-yuan-387542a5
